@@ -1,0 +1,11 @@
+@model Product
+@{ ViewData["Title"] = "Edit Product"; }
+
+<h2>✏️ Edit Plushie</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+    <partial name="_ProductForm" />
+    <button type="submit" class="btn btn-navy">Save</button>
+    <a asp-action="Index" class="btn btn-ink">Cancel</a>
+</form>

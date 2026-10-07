@@ -1,0 +1,48 @@
+@model List<Product>
+@{ ViewData["Title"] = "Products"; }
+
+@* ✿ Title + search bar + add button ✿ *@
+<div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <h2 class="mb-0">✨ Anime Plushies</h2>
+
+    <form asp-action="Index" method="get" class="d-flex gap-2">
+        <input type="text" name="searchString" value="@ViewData["SearchString"]" class="form-control" placeholder="Search plushies..." />
+        <button type="submit" class="btn btn-navy">Search</button>
+        <a asp-action="Index" class="btn btn-ink">Clear</a>
+    </form>
+
+    <a asp-action="Create" class="btn btn-pastel">+ Add Product</a>
+</div>
+
+@if (!Model.Any())
+{
+    <p class="text-muted">No plushies found (｡•́︿•̀｡)</p>
+}
+
+@* ✿ Product cards ✿ *@
+<div class="row">
+    @foreach (Product p in Model)
+    {
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card h-100">
+                <div class="plush-top">🧸</div>
+                <div class="card-body">
+                    <h5 class="card-title">@p.Name</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@p.Category</h6>
+                    <p class="card-text">@p.Description</p>
+                    <p class="price">₱@(p.Price.ToString("N2"))</p>
+                </div>
+                <div class="card-footer d-flex gap-2">
+                    <form asp-controller="Cart" asp-action="Add" method="post">
+                        <input type="hidden" name="productId" value="@p.Id" />
+                        <button type="submit" class="btn btn-navy btn-sm">Add to Cart</button>
+                    </form>
+                    <a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-pastel btn-sm">Edit</a>
+                    <form asp-action="Delete" asp-route-id="@p.Id" method="post" onsubmit="return confirm('Delete this plushie?');">
+                        <button type="submit" class="btn btn-ink btn-sm">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>

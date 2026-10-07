@@ -1,0 +1,34 @@
+/* ✿ Colors ✿ */
+:root {
+    --ink: #111111;
+    --paper: #ffffff;
+    --navy: #1f2a5a;
+    --pink: #ffd6e8;
+    --mint: #d6f5e8;
+    --lavender: #e6dcff;
+}
+
+/* ✿ Base ✿ */
+body { background: var(--paper); color: var(--ink); }
+h2 { font-weight: 700; }
+
+/* ✿ Navbar ✿ */
+.navbar { border-bottom: 2px solid var(--ink); background: var(--paper); }
+.navbar-brand { font-weight: 700; color: var(--navy) !important; }
+.nav-link { color: var(--ink) !important; }
+.nav-link:hover { color: var(--navy) !important; text-decoration: underline; }
+
+/* ✿ Cards ✿ */
+.card { border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; }
+.plush-top { background: var(--lavender); font-size: 3rem; text-align: center; padding: 0.75rem; }
+.card-footer { background: var(--pink); border-top: 2px solid var(--ink); }
+.total-card { background: var(--mint); }
+.price { color: var(--navy); font-weight: 700; }
+
+/* ✿ Buttons ✿ */
+.btn-navy { background: var(--navy); color: #fff; border: 2px solid var(--navy); }
+.btn-navy:hover { background: #fff; color: var(--navy); }
+.btn-pastel { background: var(--mint); color: var(--ink); border: 2px solid var(--ink); }
+.btn-pastel:hover { background: var(--lavender); color: var(--ink); }
+.btn-ink { background: #fff; color: var(--ink); border: 2px solid var(--ink); }
+.btn-ink:hover { background: var(--ink); color: #fff; }
